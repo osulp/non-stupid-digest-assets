@@ -9,10 +9,10 @@ module Sprockets
         full_non_digest_path = File.join dir, info['logical_path']
         full_non_digest_gz_path = "#{full_non_digest_path}.gz"
         logger.info "Writing #{full_non_digest_path}"
-        FileUtils.cp full_digest_path, full_non_digest_path
+        FileUtils.cp full_digest_path, full_non_digest_path unless full_digest_path == full_non_digest_path
         if File.exists? full_digest_gz_path
           logger.info "Writing #{full_non_digest_gz_path}"
-          FileUtils.cp full_digest_gz_path, full_non_digest_gz_path
+          FileUtils.cp full_digest_gz_path, full_non_digest_gz_path unless full_digest_gz_path == full_non_digest_gz_path
         end
       end
     end
